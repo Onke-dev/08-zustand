@@ -11,6 +11,35 @@ interface Props {
   params: Promise<{ slug: string[] }>;
 }
 
+export const generateMetadata = async ({ params }: Props) => {
+  const { slug } = await params;
+  const rawtag = slug[0];
+
+  const tag = rawtag === "all" ? undefined : rawtag;
+
+  const category = tag
+    ? tag.charAt(0).toUpperCase() + tag.slice(1)
+    : "All Notes";
+
+  return {
+    title: `NoteHub ${category}`,
+    description: "NoteHub is categories.",
+    openGraph: {
+      title: `NoteHub ${tag}`,
+      description: "NoteHub is categories.",
+      url: `http://localhost:3000/notes/filter/${category}`,
+      images: [
+        {
+          url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
+          width: 1200,
+          height: 630,
+          alt: "NoteHub",
+        },
+      ],
+    },
+  };
+};
+
 const NoteFilterPage = async ({ params }: Props) => {
   const res = await params;
   const rawtag = res.slug[0];
@@ -21,7 +50,7 @@ const NoteFilterPage = async ({ params }: Props) => {
 
   await queryClient.prefetchQuery({
     queryKey: ["notes", "", 1],
-    // Передаємо аргумент з queryKey у fetchNotes, щоб уникнути помилки "expected 1, got 0"
+
     queryFn: () => fetchNotes({ search: "", page: 1, tag }),
   });
 
