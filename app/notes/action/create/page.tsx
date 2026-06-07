@@ -3,12 +3,12 @@ import css from "./CreateNote.module.css";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Creat New Note",
-  description: "You can creat new Note here",
+  title: "Create New Note",
+  description: "You can create new Note here",
   openGraph: {
-    title: "Creat New Note",
-    description: "You can creat new Note here",
-    url: "http://localhost:3000/notes/action/create",
+    title: "Create New Note",
+    description: "You can create new Note here",
+    url: "https://08-zustand-ebon-three.vercel.app/notes/action/create",
     images: [
       {
         url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",

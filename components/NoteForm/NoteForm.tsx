@@ -40,7 +40,7 @@ function NoteForm() {
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ) => {
-    setDraft({ ...draft, [e.target.title]: e.target.value });
+    setDraft({ ...draft, [e.target.name]: e.target.value });
   };
 
   const handleCreate = (action: FormData) => {
