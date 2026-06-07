@@ -30,7 +30,6 @@ function NoteForm() {
       await queryClient.invalidateQueries({ queryKey: ["notes"] });
       handleCancel();
       clearDraft();
-      router.push(`/notes/filter/all`);
     },
     onError: () => {
       //toast error

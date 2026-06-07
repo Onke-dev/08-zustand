@@ -12,7 +12,9 @@ interface Props {
   params: Promise<{ slug: string[] }>;
 }
 
-export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
+export const generateMetadata = async ({
+  params,
+}: Props): Promise<Metadata> => {
   const { slug } = await params;
   const rawtag = slug[0];
 
@@ -24,11 +26,11 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 
   return {
     title: `NoteHub ${category}`,
-    description: "NoteHub is categories.",
+    description: `NoteHub is ${category}.`,
     openGraph: {
-      title: `NoteHub ${tag}`,
-      description: "NoteHub is categories.",
-      url: `http://localhost:3000/notes/filter/${category}`,
+      title: `NoteHub ${category}`,
+      description: `NoteHub is ${category}.`,
+      url: `https://08-zustand-ebon-three.vercel.app/notes/filter/all`,
       images: [
         {
           url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
